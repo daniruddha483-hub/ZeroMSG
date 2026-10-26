@@ -1,0 +1,576 @@
+.settings-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(255, 0, 140, 0.07),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(255, 77, 179, 0.04),
+      transparent 25%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  overflow: hidden;
+}
+
+.settings-page::before {
+  content: "";
+
+  position: fixed;
+
+  width: 280px;
+  height: 280px;
+
+  top: 100px;
+  right: -140px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 0, 140, 0.06);
+
+  filter: blur(80px);
+
+  pointer-events: none;
+
+  animation: settingsGlow 10s ease-in-out infinite;
+}
+
+.settings-content {
+  position: relative;
+  z-index: 2;
+
+  min-height: calc(100vh - 70px);
+
+  padding: 45px 24px 80px;
+
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+.settings-card {
+  width: 100%;
+  max-width: 700px;
+
+  padding: 30px;
+
+  border-radius: 24px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  box-shadow:
+    14px 14px 35px rgba(0, 0, 0, 0.4),
+    -8px -8px 25px rgba(255, 255, 255, 0.015);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  animation: settingsEnter 0.6s ease both;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settings-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 13px;
+
+  color: var(--pink-light);
+
+  background: rgba(255, 0, 140, 0.08);
+
+  border: 1px solid rgba(255, 0, 140, 0.15);
+
+  box-shadow: 0 0 18px rgba(255, 0, 140, 0.08);
+
+  font-size: 20px;
+}
+
+.settings-header h1 {
+  margin: 0 0 4px;
+
+  color: var(--white);
+
+  font-size: 32px;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+.settings-header p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+.settings-section {
+  padding: 25px 0;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 14px;
+
+  color: var(--white);
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.section-title svg {
+  color: var(--pink-light);
+
+  font-size: 16px;
+}
+
+.storage-card,
+.privacy-card {
+  padding: 17px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.015);
+}
+
+.storage-card strong {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #e8e8e8;
+
+  font-size: 13px;
+}
+
+.storage-card p,
+.privacy-card p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+.privacy-card {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.danger-section {
+  border-bottom: none;
+
+  padding-bottom: 10px;
+}
+
+.settings-action {
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  padding: 16px;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  text-align: center;
+
+  border-radius: 14px;
+
+  background: rgba(239, 235, 237, 0.055);
+
+  border: 1px solid rgb(231, 24, 131);
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.settings-action:hover {
+  transform: translateY(-2px);
+
+  background: rgba(255, 255, 255, 0.045);
+
+  border-color: rgba(255, 0, 140, 0.18);
+}
+
+.settings-action div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.settings-action strong {
+  color: #e5e5e5;
+
+  font-size: 13px;
+}
+
+.settings-action span {
+  color: var(--muted);
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+.settings-action > svg {
+  flex-shrink: 0;
+
+  color: var(--pink-light);
+
+  font-size: 17px;
+}
+
+.settings-action.danger:hover {
+  border-color: rgba(255, 70, 110, 0.25);
+
+  background: rgba(255, 50, 90, 0.045);
+}
+
+.settings-action.danger > svg {
+  color: #ff6685;
+}
+
+.settings-message {
+  margin-top: 15px;
+
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 0, 140, 0.06);
+
+  border: 1px solid rgba(255, 0, 140, 0.12);
+
+  color: var(--pink-soft);
+
+  font-size: 12px;
+
+  text-align: center;
+
+  animation: messageEnter 0.3s ease both;
+}
+
+.settings-footer {
+  padding-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--muted-dark);
+
+  font-size: 10px;
+}
+
+.settings-footer span:first-child {
+  color: var(--pink-light);
+
+  font-weight: 700;
+}
+
+.settings-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.settings-confirm-box {
+  width: min(90%, 380px);
+
+  padding: 24px;
+
+  background: var(--surface);
+
+  border: 1px solid rgba(255, 0, 140, 0.25);
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow:
+    10px 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(255, 0, 140, 0.12);
+
+  animation: settingsConfirmIn 0.2s ease;
+}
+
+.settings-confirm-box.danger-confirm {
+  border-color: rgba(255, 70, 90, 0.3);
+
+  box-shadow:
+    10px 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(255, 60, 80, 0.12);
+}
+
+.settings-confirm-box h3 {
+  margin: 0 0 8px;
+
+  color: var(--white);
+
+  font-size: 18px;
+}
+
+.settings-confirm-box p {
+  margin: 0 0 22px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.settings-confirm-actions {
+  display: flex;
+
+  gap: 10px;
+}
+
+.settings-confirm-actions button {
+  flex: 1;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  transition: var(--transition);
+}
+
+.settings-cancel-btn {
+  background: var(--surface-light);
+
+  color: var(--text);
+}
+
+.settings-cancel-btn:hover {
+  background: var(--surface-dark);
+}
+
+.settings-confirm-btn {
+  background: var(--pink);
+
+  color: white;
+}
+
+.settings-confirm-btn:hover {
+  box-shadow: var(--pink-glow);
+}
+
+.danger-confirm .settings-confirm-btn {
+  background: #e63950;
+}
+
+.danger-confirm .settings-confirm-btn:hover {
+  background: #ff475c;
+
+  box-shadow:
+    0 0 12px rgba(255, 60, 80, 0.35),
+    0 0 25px rgba(255, 60, 80, 0.15);
+}
+
+@keyframes settingsConfirmIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (min-width: 768px) {
+  .settings-content {
+    min-height: calc(100vh - 70px);
+
+    padding: 65px 50px 90px;
+  }
+
+  .settings-card {
+    padding: 36px;
+  }
+
+  .settings-header h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-content {
+    min-height: calc(100vh - 62px);
+
+    padding: 25px 16px 60px;
+  }
+
+  .settings-card {
+    padding: 22px 18px;
+
+    border-radius: 20px;
+  }
+
+  .settings-header {
+    gap: 11px;
+
+    padding-bottom: 21px;
+  }
+
+  .settings-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 11px;
+
+    font-size: 17px;
+  }
+
+  .settings-header h1 {
+    font-size: 28px;
+  }
+
+  .settings-header p {
+    font-size: 11px;
+  }
+
+  .settings-section {
+    padding: 21px 0;
+  }
+
+  .settings-action {
+    padding: 14px;
+  }
+
+  .settings-footer {
+    font-size: 9px;
+  }
+}
+
+@keyframes settingsEnter {
+  from {
+    opacity: 0;
+
+    transform: translateY(16px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes messageEnter {
+  from {
+    opacity: 0;
+
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes settingsGlow {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-20px, 20px);
+  }
+}
+.privacy-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.privacy-card li {
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary, #b8b8b8);
+}
+
+.privacy-card li:last-child {
+  margin-bottom: 0;
+}
