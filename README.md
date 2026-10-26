@@ -27,21 +27,25 @@ My main goal was to make messaging simple and private. No accounts, no unnecessa
 
 First, clone the repository:
 
-git clone <repo-url>
-cd ZeroMSG
+>git clone <repo-url>
+
+>cd ZeroMSG
 
 
 Install the frontend dependencies and start the app:
 
-npm install
-npm run dev
+>npm install
+
+>npm run dev
 
 
 In a separate terminal, start the backend:
 
-cd server
-npm install
-node index.js
+>cd server
+
+>npm install
+
+>node index.js
 
 
 Make sure both the frontend and backend are running.
