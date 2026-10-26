@@ -1,81 +1,73 @@
 # ZeroMSG
 
-ZeroMSG is a privacy-focused real-time messaging application built using React and Node.js. It allows users to create or join chat rooms and exchange encrypted messages... No account is needed to use this webapp
+I built ZeroMSG as a simple, privacy-focused messaging web app where you can chat with people without creating an account or signing up for anything.
 
-## Features
+My main goal was to make messaging simple and private. No accounts, no unnecessary personal information, and no permanent server-side chat history. Just create a room, share the invite link, and start chatting.
 
-- Create and join chat rooms using room IDs
-- Real-time messaging using WebSockets
-- AES-GCM encryption for messages
-- Encryption key sharing through invite links
-- Chat history stored locally in the browser
-- No user accounts or traditional database
-- The server relays messages without storing chat history permanently
+## What can you do with it?
 
-## Tech Stack
+- Create a chat room or join one using a room ID.
+- Chat in real time with WebSockets.
+- Send encrypted messages using AES-GCM encryption.
+- Share an invite link that includes the encryption key.
+- Keep your chat history stored locally in your browser.
+- Start using the app without an account, login, or registration.
 
-- Frontend: React, JavaScript, Vite, CSS
-- Backend: Node.js
-- Communication: WebSocket using the ws library
-- Encryption: Web Crypto API with AES-GCM
-- Local Storage: Browser localStorage
-- Routing: React Router DOM
+## How I built it
 
-## Installation
+- React and JavaScript for the frontend.
+- Vite for development and building.
+- Node.js for the backend.
+- WebSockets using the ws library for real-time messaging.
+- Web Crypto API for AES-GCM encryption.
+- localStorage to keep chat history on the user's device.
+- React Router DOM for navigation.
 
-1. Clone the repository.
+## Getting Started
 
+First, clone the repository:
 
->>git clone <repo url>
-
-
-2. Navigate to the project folder.
-
-
->>cd ZeroMSG
+git clone <repo-url>
+cd ZeroMSG
 
 
-3. Install frontend dependencies.
+Install the frontend dependencies and start the app:
+
+npm install
+npm run dev
 
 
->>npm install
+In a separate terminal, start the backend:
+
+cd server
+npm install
+node index.js
 
 
-4. Start the frontend.
+Make sure both the frontend and backend are running.
 
+## How to use it
 
->>npm run dev
+1. Open ZeroMSG in your browser.
+2. Create a room or join one using a room ID.
+3. Share the invite link with the person you want to chat with.
+4. Start chatting.
 
+That's it. No account required.
 
-5. Navigate to the server folder in another terminal.
+## Privacy and Security
 
+Privacy was one of the main things I wanted to focus on while building ZeroMSG.
 
->>cd server
->>npm install
->>node index.js
+- Messages are encrypted in the browser before being sent to the server.
+- The server relays encrypted messages.
+- The encryption key is shared through the invite link.
+- Chat history stays in the browser's local storage.
+- Clearing the browser's site data removes the locally stored chat history.
 
+The project is designed to keep things private and simple. However, encryption doesn't replace user authentication, and anyone who obtains an invite link containing the key may be able to access the chat. The app is still a work in progress.
 
-Make sure the frontend and backend are running.
+## Future improvement
 
-## Usage
+I plan to keep improving ZeroMSG, especially the encryption key verification, connection handling, and deployment of the backend.
 
-1. Open the application in your browser.
-2. Create a new chat room or join an existing room.
-3. Share the room invite link with others.
-4. Exchange messages in real time.
-
-## Privacy
-
-Messages are encrypted in the browser before being sent to the server. The server relays the encrypted messages, while chat history is stored locally in each user's browser.
-
-Clearing the browser's site data will remove locally stored chat history.
-
-## Current Limitations
-
-- Encryption key sharing depends on the invite link.
-- The backend must be hosted separately from the frontend for production deployment.
-
-## Future Improvements
-- Improve encryption key verification.
-- Add more connection and error handling.
-- Deploy the backend for public use.
