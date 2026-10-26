@@ -76,7 +76,6 @@ Clearing the browser's site data will remove locally stored chat history.
 - The backend must be hosted separately from the frontend for production deployment.
 
 ## Future Improvements
-
 - Improve encryption key verification.
 - Add more connection and error handling.
 - Deploy the backend for public use.
